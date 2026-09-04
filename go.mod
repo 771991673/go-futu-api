@@ -1,4 +1,4 @@
-module github.com/hurisheng/go-futu-api
+module github.com/771991673/go-futu-api
 
 go 1.22
 

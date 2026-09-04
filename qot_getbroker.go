@@ -3,9 +3,9 @@ package futuapi
 import (
 	"context"
 
-	"github.com/hurisheng/go-futu-api/pb/qotcommon"
-	"github.com/hurisheng/go-futu-api/pb/qotgetbroker"
-	"github.com/hurisheng/go-futu-api/protocol"
+	"github.com/771991673/go-futu-api/pb/qotcommon"
+	"github.com/771991673/go-futu-api/pb/qotgetbroker"
+	"github.com/771991673/go-futu-api/protocol"
 )
 
 const ProtoIDQotGetBroker = 3014 //Qot_GetBroker	获取经纪队列

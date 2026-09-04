@@ -7,7 +7,7 @@
 package qotcommon
 
 import (
-	_ "github.com/hurisheng/go-futu-api/pb/common"
+	_ "github.com/771991673/go-futu-api/pb/common"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -32,6 +32,11 @@ const (
 	QotMarket_QotMarket_CNSZ_Security QotMarket = 22 //深股市场
 	QotMarket_QotMarket_SG_Security   QotMarket = 31 //新加坡市场
 	QotMarket_QotMarket_JP_Security   QotMarket = 41 //日本市场
+	QotMarket_QotMarket_AU_Security   QotMarket = 51 //澳大利亚市场
+	QotMarket_QotMarket_MY_Security   QotMarket = 61 //马来西亚市场
+	QotMarket_QotMarket_CA_Security   QotMarket = 71 //加拿大市场
+	QotMarket_QotMarket_FX_Security   QotMarket = 81 //外汇市场
+	QotMarket_QotMarket_CC_Security   QotMarket = 91 //加密货币市场
 )
 
 // Enum value maps for QotMarket.
@@ -45,6 +50,11 @@ var (
 		22: "QotMarket_CNSZ_Security",
 		31: "QotMarket_SG_Security",
 		41: "QotMarket_JP_Security",
+		51: "QotMarket_AU_Security",
+		61: "QotMarket_MY_Security",
+		71: "QotMarket_CA_Security",
+		81: "QotMarket_FX_Security",
+		91: "QotMarket_CC_Security",
 	}
 	QotMarket_value = map[string]int32{
 		"QotMarket_Unknown":       0,
@@ -55,6 +65,11 @@ var (
 		"QotMarket_CNSZ_Security": 22,
 		"QotMarket_SG_Security":   31,
 		"QotMarket_JP_Security":   41,
+		"QotMarket_AU_Security":   51,
+		"QotMarket_MY_Security":   61,
+		"QotMarket_CA_Security":   71,
+		"QotMarket_FX_Security":   81,
+		"QotMarket_CC_Security":   91,
 	}
 )
 

@@ -3,9 +3,9 @@ package futuapi
 import (
 	"context"
 
-	"github.com/hurisheng/go-futu-api/pb/qotcommon"
-	"github.com/hurisheng/go-futu-api/pb/qotgetkl"
-	"github.com/hurisheng/go-futu-api/protocol"
+	"github.com/771991673/go-futu-api/pb/qotcommon"
+	"github.com/771991673/go-futu-api/pb/qotgetkl"
+	"github.com/771991673/go-futu-api/protocol"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -17,8 +17,8 @@ func init() {
 
 // 获取实时 K 线
 func (api *FutuAPI) GetCurKLine(ctx context.Context, security *qotcommon.Security, num int32, rehabType qotcommon.RehabType, klType qotcommon.KLType) (*qotgetkl.S2C, error) {
-	if security == nil ||
-		rehabType == qotcommon.RehabType_RehabType_None ||
+	// RehabType_None (0) is valid: unadjusted / 不复权. Do not treat it as missing.
+	if security == nil || num <= 0 ||
 		klType == qotcommon.KLType_KLType_Unknown {
 		return nil, ErrParameters
 	}

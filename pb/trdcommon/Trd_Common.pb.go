@@ -7,7 +7,7 @@
 package trdcommon
 
 import (
-	_ "github.com/hurisheng/go-futu-api/pb/common"
+	_ "github.com/771991673/go-futu-api/pb/common"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -85,6 +85,7 @@ const (
 	TrdCategory_TrdCategory_Unknown  TrdCategory = 0 //未知品类
 	TrdCategory_TrdCategory_Security TrdCategory = 1 //证券
 	TrdCategory_TrdCategory_Future   TrdCategory = 2 //期货
+	TrdCategory_TrdCategory_Crypto   TrdCategory = 3 //加密货币
 )
 
 // Enum value maps for TrdCategory.
@@ -93,11 +94,13 @@ var (
 		0: "TrdCategory_Unknown",
 		1: "TrdCategory_Security",
 		2: "TrdCategory_Future",
+		3: "TrdCategory_Crypto",
 	}
 	TrdCategory_value = map[string]int32{
 		"TrdCategory_Unknown":  0,
 		"TrdCategory_Security": 1,
 		"TrdCategory_Future":   2,
+		"TrdCategory_Crypto":   3,
 	}
 )
 
@@ -142,19 +145,27 @@ func (TrdCategory) EnumDescriptor() ([]byte, []int) {
 type TrdMarket int32
 
 const (
-	TrdMarket_TrdMarket_Unknown             TrdMarket = 0  //未知市场
-	TrdMarket_TrdMarket_HK                  TrdMarket = 1  //香港市场
-	TrdMarket_TrdMarket_US                  TrdMarket = 2  //美国市场
-	TrdMarket_TrdMarket_CN                  TrdMarket = 3  //大陆市场
-	TrdMarket_TrdMarket_HKCC                TrdMarket = 4  //香港A股通市场
-	TrdMarket_TrdMarket_Futures             TrdMarket = 5  //期货市场
-	TrdMarket_TrdMarket_SG                  TrdMarket = 6  //期货市场
-	TrdMarket_TrdMarket_Futures_Simulate_HK TrdMarket = 10 // 模拟交易期货市场
+	TrdMarket_TrdMarket_Unknown             TrdMarket = 0   //未知市场
+	TrdMarket_TrdMarket_HK                  TrdMarket = 1   //香港市场
+	TrdMarket_TrdMarket_US                  TrdMarket = 2   //美国市场
+	TrdMarket_TrdMarket_CN                  TrdMarket = 3   //大陆市场
+	TrdMarket_TrdMarket_HKCC                TrdMarket = 4   //香港A股通市场
+	TrdMarket_TrdMarket_Futures             TrdMarket = 5   //期货市场
+	TrdMarket_TrdMarket_SG                  TrdMarket = 6   //新加坡市场
+	TrdMarket_TrdMarket_Crypto              TrdMarket = 7   //加密货币市场
+	TrdMarket_TrdMarket_AU                  TrdMarket = 8   //澳洲市场
+	TrdMarket_TrdMarket_Futures_Simulate_HK TrdMarket = 10  // 模拟交易期货市场
 	TrdMarket_TrdMarket_Futures_Simulate_US TrdMarket = 11
 	TrdMarket_TrdMarket_Futures_Simulate_SG TrdMarket = 12
 	TrdMarket_TrdMarket_Futures_Simulate_JP TrdMarket = 13
+	TrdMarket_TrdMarket_JP                  TrdMarket = 15  //日本市场
+	TrdMarket_TrdMarket_MY                  TrdMarket = 111 //马来西亚市场
+	TrdMarket_TrdMarket_CA                  TrdMarket = 112 //加拿大市场
 	TrdMarket_TrdMarket_HK_Fund             TrdMarket = 113 //香港基金市场
 	TrdMarket_TrdMarket_US_Fund             TrdMarket = 123 //美国基金市场
+	TrdMarket_TrdMarket_SG_Fund             TrdMarket = 124 //新加坡基金市场
+	TrdMarket_TrdMarket_MY_Fund             TrdMarket = 125 //马来西亚基金市场
+	TrdMarket_TrdMarket_JP_Fund             TrdMarket = 126 //日本基金市场
 )
 
 // Enum value maps for TrdMarket.
@@ -167,12 +178,20 @@ var (
 		4:   "TrdMarket_HKCC",
 		5:   "TrdMarket_Futures",
 		6:   "TrdMarket_SG",
+		7:   "TrdMarket_Crypto",
+		8:   "TrdMarket_AU",
 		10:  "TrdMarket_Futures_Simulate_HK",
 		11:  "TrdMarket_Futures_Simulate_US",
 		12:  "TrdMarket_Futures_Simulate_SG",
 		13:  "TrdMarket_Futures_Simulate_JP",
+		15:  "TrdMarket_JP",
+		111: "TrdMarket_MY",
+		112: "TrdMarket_CA",
 		113: "TrdMarket_HK_Fund",
 		123: "TrdMarket_US_Fund",
+		124: "TrdMarket_SG_Fund",
+		125: "TrdMarket_MY_Fund",
+		126: "TrdMarket_JP_Fund",
 	}
 	TrdMarket_value = map[string]int32{
 		"TrdMarket_Unknown":             0,
@@ -182,12 +201,20 @@ var (
 		"TrdMarket_HKCC":                4,
 		"TrdMarket_Futures":             5,
 		"TrdMarket_SG":                  6,
+		"TrdMarket_Crypto":              7,
+		"TrdMarket_AU":                  8,
 		"TrdMarket_Futures_Simulate_HK": 10,
 		"TrdMarket_Futures_Simulate_US": 11,
 		"TrdMarket_Futures_Simulate_SG": 12,
 		"TrdMarket_Futures_Simulate_JP": 13,
+		"TrdMarket_JP":                  15,
+		"TrdMarket_MY":                  111,
+		"TrdMarket_CA":                  112,
 		"TrdMarket_HK_Fund":             113,
 		"TrdMarket_US_Fund":             123,
+		"TrdMarket_SG_Fund":             124,
+		"TrdMarket_MY_Fund":             125,
+		"TrdMarket_JP_Fund":             126,
 	}
 )
 
@@ -232,25 +259,35 @@ func (TrdMarket) EnumDescriptor() ([]byte, []int) {
 type TrdSecMarket int32
 
 const (
-	TrdSecMarket_TrdSecMarket_Unknown TrdSecMarket = 0  //未知市场
-	TrdSecMarket_TrdSecMarket_HK      TrdSecMarket = 1  //香港市场(股票、窝轮、牛熊、期权、期货等)
-	TrdSecMarket_TrdSecMarket_US      TrdSecMarket = 2  //美国市场(股票、期权、期货等)
-	TrdSecMarket_TrdSecMarket_CN_SH   TrdSecMarket = 31 //沪股市场(股票)
-	TrdSecMarket_TrdSecMarket_CN_SZ   TrdSecMarket = 32 //深股市场(股票)
-	TrdSecMarket_TrdSecMarket_SG      TrdSecMarket = 41 //新加坡市场(期货)
-	TrdSecMarket_TrdSecMarket_JP      TrdSecMarket = 51 //日本市场(期货)
+	TrdSecMarket_TrdSecMarket_Unknown TrdSecMarket = 0   //未知市场
+	TrdSecMarket_TrdSecMarket_HK      TrdSecMarket = 1   //香港市场(股票、窝轮、牛熊、期权、期货等)
+	TrdSecMarket_TrdSecMarket_US      TrdSecMarket = 2   //美国市场(股票、期权、期货等)
+	TrdSecMarket_TrdSecMarket_CN_SH   TrdSecMarket = 31  //沪股市场(股票)
+	TrdSecMarket_TrdSecMarket_CN_SZ   TrdSecMarket = 32  //深股市场(股票)
+	TrdSecMarket_TrdSecMarket_SG      TrdSecMarket = 41  //新加坡市场(期货)
+	TrdSecMarket_TrdSecMarket_JP      TrdSecMarket = 51  //日本市场(期货)
+	TrdSecMarket_TrdSecMarket_AU      TrdSecMarket = 61  //澳大利亚
+	TrdSecMarket_TrdSecMarket_MY      TrdSecMarket = 71  //马来西亚
+	TrdSecMarket_TrdSecMarket_CA      TrdSecMarket = 81  //加拿大
+	TrdSecMarket_TrdSecMarket_FX      TrdSecMarket = 91  //外汇
+	TrdSecMarket_TrdSecMarket_CC      TrdSecMarket = 101 //加密货币市场
 )
 
 // Enum value maps for TrdSecMarket.
 var (
 	TrdSecMarket_name = map[int32]string{
-		0:  "TrdSecMarket_Unknown",
-		1:  "TrdSecMarket_HK",
-		2:  "TrdSecMarket_US",
-		31: "TrdSecMarket_CN_SH",
-		32: "TrdSecMarket_CN_SZ",
-		41: "TrdSecMarket_SG",
-		51: "TrdSecMarket_JP",
+		0:   "TrdSecMarket_Unknown",
+		1:   "TrdSecMarket_HK",
+		2:   "TrdSecMarket_US",
+		31:  "TrdSecMarket_CN_SH",
+		32:  "TrdSecMarket_CN_SZ",
+		41:  "TrdSecMarket_SG",
+		51:  "TrdSecMarket_JP",
+		61:  "TrdSecMarket_AU",
+		71:  "TrdSecMarket_MY",
+		81:  "TrdSecMarket_CA",
+		91:  "TrdSecMarket_FX",
+		101: "TrdSecMarket_CC",
 	}
 	TrdSecMarket_value = map[string]int32{
 		"TrdSecMarket_Unknown": 0,
@@ -260,6 +297,11 @@ var (
 		"TrdSecMarket_CN_SZ":   32,
 		"TrdSecMarket_SG":      41,
 		"TrdSecMarket_JP":      51,
+		"TrdSecMarket_AU":      61,
+		"TrdSecMarket_MY":      71,
+		"TrdSecMarket_CA":      81,
+		"TrdSecMarket_FX":      91,
+		"TrdSecMarket_CC":      101,
 	}
 )
 
@@ -1088,6 +1130,7 @@ type TimeInForce int32
 const (
 	TimeInForce_TimeInForce_DAY TimeInForce = 0 // 当日有效
 	TimeInForce_TimeInForce_GTC TimeInForce = 1 // 撤单前有效，最多持续90自然日。
+	TimeInForce_TimeInForce_IOC TimeInForce = 2 // 即时成交剩余撤销
 )
 
 // Enum value maps for TimeInForce.
@@ -1095,10 +1138,12 @@ var (
 	TimeInForce_name = map[int32]string{
 		0: "TimeInForce_DAY",
 		1: "TimeInForce_GTC",
+		2: "TimeInForce_IOC",
 	}
 	TimeInForce_value = map[string]int32{
 		"TimeInForce_DAY": 0,
 		"TimeInForce_GTC": 1,
+		"TimeInForce_IOC": 2,
 	}
 )
 

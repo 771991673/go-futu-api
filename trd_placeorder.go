@@ -3,9 +3,9 @@ package futuapi
 import (
 	"context"
 
-	"github.com/hurisheng/go-futu-api/pb/trdcommon"
-	"github.com/hurisheng/go-futu-api/pb/trdplaceorder"
-	"github.com/hurisheng/go-futu-api/protocol"
+	"github.com/771991673/go-futu-api/pb/trdcommon"
+	"github.com/771991673/go-futu-api/pb/trdplaceorder"
+	"github.com/771991673/go-futu-api/protocol"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -51,7 +51,9 @@ func (api *FutuAPI) PlaceOrder(ctx context.Context, header *trdcommon.TrdHeader,
 	if remark != "" {
 		req.C2S.Remark = proto.String(remark)
 	}
-	if timeInForce == trdcommon.TimeInForce_TimeInForce_DAY || timeInForce == trdcommon.TimeInForce_TimeInForce_GTC {
+	if timeInForce == trdcommon.TimeInForce_TimeInForce_DAY ||
+		timeInForce == trdcommon.TimeInForce_TimeInForce_GTC ||
+		timeInForce == trdcommon.TimeInForce_TimeInForce_IOC {
 		req.C2S.TimeInForce = proto.Int32(int32(timeInForce))
 	}
 	if fillOutsideRTH != nil {

@@ -1,7 +1,7 @@
 syntax = "proto2";
 package Trd_Common;
 option java_package = "com.futu.openapi.pb";
-option go_package = "github.com/hurisheng/go-futu-api/pb/trdcommon";
+option go_package = "github.com/771991673/go-futu-api/pb/trdcommon";
 
 import "Common.proto";
 
@@ -18,6 +18,7 @@ enum TrdCategory
 	TrdCategory_Unknown = 0; //未知品类
 	TrdCategory_Security = 1; //证券
 	TrdCategory_Future = 2; //期货
+	TrdCategory_Crypto = 3; //加密货币
 }
 
 //交易市场，是大的市场，不是具体品种
@@ -29,13 +30,21 @@ enum TrdMarket
 	TrdMarket_CN = 3; //大陆市场
 	TrdMarket_HKCC = 4; //香港A股通市场
 	TrdMarket_Futures = 5; //期货市场
-	TrdMarket_SG = 6; //期货市场
+	TrdMarket_SG = 6; //新加坡市场
+	TrdMarket_Crypto = 7; //加密货币市场
+	TrdMarket_AU = 8; //澳洲市场
     TrdMarket_Futures_Simulate_HK = 10; // 模拟交易期货市场
     TrdMarket_Futures_Simulate_US = 11;
     TrdMarket_Futures_Simulate_SG = 12;
     TrdMarket_Futures_Simulate_JP = 13;
+	TrdMarket_JP = 15; //日本市场
+	TrdMarket_MY = 111; //马来西亚市场
+	TrdMarket_CA = 112; //加拿大市场
 	TrdMarket_HK_Fund = 113; //香港基金市场
 	TrdMarket_US_Fund = 123; //美国基金市场
+	TrdMarket_SG_Fund = 124; //新加坡基金市场
+	TrdMarket_MY_Fund = 125; //马来西亚基金市场
+	TrdMarket_JP_Fund = 126; //日本基金市场
 }
 
 //可交易证券所属市场，目前主要是区分A股的沪市和深市，香港和美国暂不需要细分
@@ -48,6 +57,11 @@ enum TrdSecMarket
 	TrdSecMarket_CN_SZ = 32; //深股市场(股票)
 	TrdSecMarket_SG = 41;    //新加坡市场(期货)
 	TrdSecMarket_JP = 51;    //日本市场(期货)
+	TrdSecMarket_AU = 61;    //澳大利亚
+	TrdSecMarket_MY = 71;    //马来西亚
+	TrdSecMarket_CA = 81;    //加拿大
+	TrdSecMarket_FX = 91;    //外汇
+	TrdSecMarket_CC = 101;   //加密货币市场
 }
 
 //交易方向
@@ -186,6 +200,7 @@ enum TimeInForce
 {
 	TimeInForce_DAY = 0;       // 当日有效
 	TimeInForce_GTC = 1;       // 撤单前有效，最多持续90自然日。
+	TimeInForce_IOC = 2;       // 即时成交剩余撤销（加密货币市价单常用）
 }
 
 //券商

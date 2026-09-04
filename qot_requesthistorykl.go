@@ -3,9 +3,9 @@ package futuapi
 import (
 	"context"
 
-	"github.com/hurisheng/go-futu-api/pb/qotcommon"
-	"github.com/hurisheng/go-futu-api/pb/qotrequesthistorykl"
-	"github.com/hurisheng/go-futu-api/protocol"
+	"github.com/771991673/go-futu-api/pb/qotcommon"
+	"github.com/771991673/go-futu-api/pb/qotrequesthistorykl"
+	"github.com/771991673/go-futu-api/protocol"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -19,8 +19,9 @@ func init() {
 func (api *FutuAPI) RequestHistoryKLine(ctx context.Context, security *qotcommon.Security, begin string, end string, klType qotcommon.KLType, rehabType qotcommon.RehabType,
 	maxNum *OptionalInt32, klFields qotcommon.KLFields, nextKey []byte, extTime *OptionalBool) (*qotrequesthistorykl.S2C, error) {
 
+	// RehabType_None (0) is valid: unadjusted / 不复权. Do not treat it as missing.
 	if security == nil || begin == "" || end == "" ||
-		klType == qotcommon.KLType_KLType_Unknown || rehabType == qotcommon.RehabType_RehabType_None {
+		klType == qotcommon.KLType_KLType_Unknown {
 		return nil, ErrParameters
 	}
 	// 请求参数

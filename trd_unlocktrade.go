@@ -5,9 +5,9 @@ import (
 	"crypto/md5"
 	"fmt"
 
-	"github.com/hurisheng/go-futu-api/pb/trdcommon"
-	"github.com/hurisheng/go-futu-api/pb/trdunlocktrade"
-	"github.com/hurisheng/go-futu-api/protocol"
+	"github.com/771991673/go-futu-api/pb/trdcommon"
+	"github.com/771991673/go-futu-api/pb/trdunlocktrade"
+	"github.com/771991673/go-futu-api/protocol"
 	"google.golang.org/protobuf/proto"
 )
 

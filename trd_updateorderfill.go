@@ -3,8 +3,8 @@ package futuapi
 import (
 	"context"
 
-	"github.com/hurisheng/go-futu-api/pb/trdupdateorderfill"
-	"github.com/hurisheng/go-futu-api/protocol"
+	"github.com/771991673/go-futu-api/pb/trdupdateorderfill"
+	"github.com/771991673/go-futu-api/protocol"
 )
 
 const ProtoIDTrdUpdateOrderFill = 2218 //Trd_UpdateOrderFill	推送成交通知

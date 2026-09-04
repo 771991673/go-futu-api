@@ -21,7 +21,7 @@
 1. import
 
     ```
-    import "github.com/hurisheng/go-futu-api"
+    import "github.com/771991673/go-futu-api"
     ```
 
 1. 创建API实例
@@ -57,6 +57,7 @@
 
 ## Change Log
 
+* Fork `github.com/771991673/go-futu-api`: 模块路径从 `hurisheng` 改为本仓库；`RehabType_None`（不复权）不再被误判为非法参数；补齐 AU/MY/CA/FX 及加密货币（QotMarket 91 / TrdMarket 7 / TrdSecMarket 101）等市场枚举。
 * 更新了接口列表，删除了失效的接口，补充新接口，修改接口的参数等
 * 去掉自定义的数据结构，直接使用protobuf编译出来的结构，update类型的数据，返回整个Response消息
 * 对于个别get类型的接口，简化返回结构体嵌套，例如返回的数据中只有一项是有意义的，直接返回该字段
